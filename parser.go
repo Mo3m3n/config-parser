@@ -332,6 +332,9 @@ func (p *Parser) ProcessLine(line string, parts, previousParts []string, comment
 				if config.State == "" {
 					config.Active = *config.Comments
 				}
+				if config.State == "snippet" {
+					config.Active = Parsers{Parsers: []ParserInterface{parser}}
+				}
 				if config.State == "defaults" {
 					config.Active = *config.Defaults
 				}
